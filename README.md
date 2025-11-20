@@ -78,7 +78,6 @@ This project serves as a comprehensive example of building a full-stack web appl
     git clone https://github.com/your-username/whatsapp_clone.git
     cd whatsapp_clone
     ```
-    *(Replace `https://github.com/your-username/whatsapp_clone.git` with the actual repository URL)*
 
 2.  **Install Ruby dependencies:**
     ```bash
