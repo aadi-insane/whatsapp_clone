@@ -1,0 +1,54 @@
+<!-- app/views/chats/show.html.erb -->
+<div class="whatsapp-chat-page d-flex flex-column" style="height: 600px;">
+
+  <div class="whatsapp-chat-header d-flex align-items-center p-3 bg-secondary text-white">
+    <%= link_to chats_path, class: "text-white me-3" do %>
+      <i class="bi bi-arrow-left fs-4"></i>
+    <% end %>
+
+    <% if @chat.users.count == 2 %>
+      <% other_user = @chat.users.where.not(id: current_user.id).first %>
+      <% chat_title = other_user.profile.try(:name) || other_user.email.split('@')[0].capitalize %>
+    <% else %>
+      <% chat_title = @chat.name %>
+    <% end %>
+
+    <% if other_user.profile.avatar.attached? %>
+      <%= image_tag other_user.profile.avatar.variant(resize_to_fill: [120, 120]), class: "rounded-circle whatsapp-avatar-small me-2", style: "object-fit: cover;" %>
+    <% else %>
+        <%= image_tag "default_user_image.jpg", class: "rounded-circle whatsapp-avatar-small me-2", style: "object-fit: cover;" %>
+    <% end %>
+
+    <h5 class="mb-0"><%= chat_title %></h5>
+  </div>
+
+  <div class="whatsapp-chat-window flex-grow-1 overflow-y-auto p-3 bg-secondary bg-opacity-10"
+       id="messages"
+       data-chat-id="<%= @chat.id %>"
+       data-controller="chat-subscription"
+       data-chat-subscription-chat-id-value="<%= @chat.id %>"
+       data-chat-subscription-current-user-email-value="<%= current_user.email %>">
+
+    <%= render partial: 'messages/message', collection: @chat.messages %>
+  </div>
+
+  <div class="whatsapp-message-input-container p-3 bg-secondary">
+    <%= form_with(model: [@chat, Message.new],
+              data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset", turbo_stream: true },
+              class: "d-flex w-100") do |f| %>
+      <%= f.text_area :content, class: "form-control whatsapp-message-input me-2", placeholder: "Type a message...", required: true, rows: 1 %>
+      <button type="submit" class="btn whatsapp-send-button">
+        <i class="bi bi-send-fill"></i>
+      </button>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const chatWindow = document.querySelector(".whatsapp-chat-window");
+    if (chatWindow) {
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+  });
+</script>

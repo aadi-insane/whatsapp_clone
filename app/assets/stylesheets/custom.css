@@ -1,0 +1,250 @@
+/* Custom styles for WhatsApp Clone */
+
+.chat-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* WhatsApp UI specific styles */
+:root {
+  --whatsapp-green: #075e54;
+  --whatsapp-light-green: #128c7e;
+  --whatsapp-bg-gray: #ece5dd;
+  --whatsapp-text-gray: #4a4a4a;
+  --whatsapp-light-gray: #f0f0f0;
+  --whatsapp-message-sent-bg: #dcf8c6;
+  --whatsapp-message-received-bg: #ffffff;
+}
+
+body {
+  background-color: var(--whatsapp-bg-gray);
+}
+
+.whatsapp-header {
+  color: var(--whatsapp-green);
+  font-weight: bold;
+}
+
+.whatsapp-fab {
+  background-color: var(--whatsapp-light-green);
+  border-color: var(--whatsapp-light-green);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.whatsapp-fab:hover {
+  background-color: #075e54; /* Darker green on hover */
+  border-color: #075e54;
+  color: white;
+}
+
+.whatsapp-chat-list {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.whatsapp-chat-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--whatsapp-light-gray);
+  color: inherit; /* Ensure link color doesn't override */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.whatsapp-chat-item:hover {
+  background-color: var(--whatsapp-light-gray);
+}
+
+.whatsapp-chat-item:last-child {
+  border-bottom: none;
+}
+
+.whatsapp-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  flex-shrink: 0; /* Prevent avatar from shrinking */
+}
+
+.whatsapp-chat-name {
+  font-weight: 600;
+  color: var(--whatsapp-text-gray);
+  margin-bottom: 2px;
+}
+
+.whatsapp-timestamp {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.whatsapp-last-message {
+  font-size: 0.9rem;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 10px); /* Adjust based on timestamp width */
+}
+
+/* Ensure Bootstrap Icons are loaded if not already */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css");
+
+
+/* Chat Show Page Styles */
+.whatsapp-chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  max-width: 700px; /* Max width for chat window */
+  margin: 0 auto;
+  background-color: var(--whatsapp-bg-gray); /* Chat background */
+}
+
+.whatsapp-chat-header {
+  background-color: var(--whatsapp-green);
+  color: white;
+  padding: 10px 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.whatsapp-avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.whatsapp-chat-window {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background-image: url('https://i.pinimg.com/originals/8c/98/99/8c98994518b575bfd8c949e91d2935b1.jpg'); /* WhatsApp background */
+  background-size: cover;
+  background-position: center;
+}
+
+.whatsapp-message {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.whatsapp-message-content {
+  max-width: 75%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  position: relative;
+  word-wrap: break-word;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+}
+
+.whatsapp-message-sent {
+  justify-content: flex-end;
+}
+
+.whatsapp-message-sent .whatsapp-message-content {
+  background-color: var(--whatsapp-message-sent-bg);
+  margin-left: auto; /* Pushes to the right */
+}
+
+.whatsapp-message-received {
+  justify-content: flex-start;
+}
+
+.whatsapp-message-received .whatsapp-message-content {
+  background-color: var(--whatsapp-message-received-bg);
+  margin-right: auto; /* Pushes to the left */
+}
+
+.whatsapp-message-sender {
+  display: block;
+  font-size: 0.75rem;
+  color: #005c4b; /* Darker green for sender name */
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.whatsapp-message-content p {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.whatsapp-message-timestamp {
+  font-size: 0.65rem;
+  color: rgba(0, 0, 0, 0.45);
+  float: right;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.whatsapp-message-input-container {
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+}
+
+.whatsapp-message-input {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  resize: none; /* Disable textarea resize */
+  min-height: 40px;
+  max-height: 100px; /* Limit height for longer messages */
+  overflow-y: auto;
+}
+
+.whatsapp-message-input:focus {
+  border-color: var(--whatsapp-light-green);
+  box-shadow: none;
+}
+
+.whatsapp-send-button {
+  background-color: var(--whatsapp-light-green);
+  border-color: var(--whatsapp-light-green);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.whatsapp-send-button:hover {
+  background-color: var(--whatsapp-green);
+  border-color: var(--whatsapp-green);
+  color: white;
+}

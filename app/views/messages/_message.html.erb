@@ -1,0 +1,15 @@
+<% is_current_user = message.user == current_user %>
+<div class="whatsapp-message <%= is_current_user ? 'whatsapp-message-sent' : 'whatsapp-message-received' %>" id="message-<%= message.id %>">
+  <div class="whatsapp-message-content">
+    <% unless is_current_user %>
+      <small class="whatsapp-message-sender">
+        <%= message.user.profile.try(:name) || message.user.email.split('@')[0].capitalize %>
+      </small>
+    <% end %>
+
+    <p class="mb-0"><%= message.content %></p>
+    <small class="whatsapp-message-timestamp">
+      <%= message.created_at.strftime("%H:%M") %>
+    </small>
+  </div>
+</div>

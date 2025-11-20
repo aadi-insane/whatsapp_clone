@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <h1 class="whatsapp-header mb-4">Start a New Chat</h1>
+
+  <%= form_with(model: @chat, class: "whatsapp-form") do |form| %>
+    <% if @chat.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
+        <ul>
+          <% @chat.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Enter chat name", required: true %>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <%= form.submit "Create Chat", class: "btn whatsapp-send-button" %>
+      <%= link_to 'Back to Chats', chats_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .whatsapp-form .form-label {
+    font-weight: 600;
+    color: var(--whatsapp-text-gray);
+  }
+  .whatsapp-form .form-control {
+    border-radius: 8px;
+    border-color: #ced4da;
+  }
+  .whatsapp-form .form-control:focus {
+    border-color: var(--whatsapp-light-green);
+    box-shadow: 0 0 0 0.25rem rgba(18, 140, 126, 0.25);
+  }
+  .whatsapp-form .whatsapp-send-button {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+</style>

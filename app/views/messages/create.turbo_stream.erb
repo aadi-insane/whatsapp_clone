@@ -1,0 +1,6 @@
+<!-- app/views/messages/create.turbo_stream.erb -->
+<turbo-stream action="append" target="messages">
+  <template>
+    <%= render partial: "messages/message", formats: [:html], locals: { message: @message } %>
+  </template>
+</turbo-stream>

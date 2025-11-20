@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="whatsapp-header">Chats</h1>
+    <%= link_to new_chat_path, class: "btn btn-success whatsapp-fab" do %>
+      <i class="bi bi-chat-fill"></i>
+    <% end %>
+  </div>
+
+  <div class="list-group whatsapp-chat-list">
+    <% if @chats.present? %>
+      <% @chats.each do |chat| %>
+        <%# <% other_user = chat.users.where.not(id: current_user.id).first %> 
+        <% other_user = chat.users.find { |u| u.id != current_user.id } %>
+        <%= link_to chat_path(chat), class: "list-group-item list-group-item-action whatsapp-chat-item" do %>
+          <div class="d-flex align-items-center">
+            <% avatar_url = other_user.profile.avatar.attached? ? url_for(other_user.profile.avatar) : asset_path('default_user_image.jpg') %>
+            <img src="<%= avatar_url %>" alt="Profile Picture" class="rounded-circle whatsapp-avatar me-3" width="50" height="50">
+
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <h5 class="mb-1 whatsapp-chat-name"><%= other_user.profile.name || other_user.email.split('@')[0].capitalize %></h5>
+                <small class="text-muted whatsapp-timestamp mx-5">
+                  <% last_message = chat.messages.order(created_at: :desc).first %>
+                  <%= last_message ? time_ago_in_words(last_message.created_at) + ' ago' : 'No messages' %>
+                </small>
+              </div>
+              <p class="mb-1 text-muted whatsapp-last-message">
+                <%= last_message ? truncate(last_message.content, length: 40) : 'No messages yet...' %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p class="text-center text-muted">No chats yet. Start a new conversation!</p>
+    <% end %>
+  </div>
+</div>
+
+<!-- Bootstrap Icons CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
