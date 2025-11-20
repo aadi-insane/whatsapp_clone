@@ -21,6 +21,7 @@ export default class extends Controller {
   }
 
   receive(data) {
+    // console.log(data)
     if (document.getElementById(`message-${data.message_id}`)) {
       return;
     }
@@ -30,7 +31,7 @@ export default class extends Controller {
 
     const senderHtml = isCurrentUser
       ? ""
-      : `<small class="whatsapp-message-sender">${data.user_email}</small>`
+      : `<small class="whatsapp-message-sender">${data.user_name}</small>`
 
     const messageElement = `
       <div class="whatsapp-message ${messageClass}" id="message-${data.message_id}">

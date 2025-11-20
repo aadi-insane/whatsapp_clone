@@ -19,13 +19,15 @@
 
 /* WhatsApp UI specific styles */
 :root {
-  --whatsapp-green: #075e54;
+  --whatsapp-green: #075E54;
   --whatsapp-light-green: #128c7e;
-  --whatsapp-bg-gray: #ece5dd;
+  --whatsapp-bg-gray: #E5DDD5;
   --whatsapp-text-gray: #4a4a4a;
   --whatsapp-light-gray: #f0f0f0;
-  --whatsapp-message-sent-bg: #dcf8c6;
-  --whatsapp-message-received-bg: #ffffff;
+  /* --whatsapp-message-sent-bg: #dcf8c6; */
+  --whatsapp-message-sent-bg: #ECE5DD;
+  /* --whatsapp-message-received-bg: #ffffff; */
+  --whatsapp-message-received-bg: #DCF8C6;
 }
 
 body {
@@ -125,6 +127,7 @@ body {
   height: 100vh; /* Full viewport height */
   max-width: 700px; /* Max width for chat window */
   margin: 0 auto;
+  margin-top: -3%;
   background-color: var(--whatsapp-bg-gray); /* Chat background */
 }
 
@@ -147,7 +150,8 @@ body {
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
-  background-image: url('https://i.pinimg.com/originals/8c/98/99/8c98994518b575bfd8c949e91d2935b1.jpg'); /* WhatsApp background */
+  /* background-image: url('https://i.pinimg.com/originals/8c/98/99/8c98994518b575bfd8c949e91d2935b1.jpg'); */
+  background-image: image-url("chat-wallpaper-bg.jpg");
   background-size: cover;
   background-position: center;
 }

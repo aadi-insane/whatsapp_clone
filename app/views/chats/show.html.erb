@@ -18,8 +18,20 @@
     <% else %>
         <%= image_tag "default_user_image.jpg", class: "rounded-circle whatsapp-avatar-small me-2", style: "object-fit: cover;" %>
     <% end %>
-
-    <h5 class="mb-0"><%= chat_title %></h5>
+    <%= link_to profile_path(other_user), class: "text-light", style: "text-decoration: none;" do %>
+      <h5 class="mb-0"><%= chat_title %></h5>
+    <% end %>
+    <div class="ms-auto d-flex">
+      <%= link_to "#", class: "text-white ms-3" do %>
+        <i class="bi bi-camera-video-fill fs-5"></i>
+      <% end %>
+      <%= link_to "#", class: "text-white ms-3" do %>
+        <i class="bi bi-telephone-fill fs-5"></i>
+      <% end %>
+      <%= link_to "#", class: "text-white ms-3" do %>
+        <i class="bi bi-three-dots-vertical fs-5"></i>
+      <% end %>
+    </div>
   </div>
 
   <div class="whatsapp-chat-window flex-grow-1 overflow-y-auto p-3 bg-secondary bg-opacity-10"

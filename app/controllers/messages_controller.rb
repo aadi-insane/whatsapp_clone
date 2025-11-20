@@ -38,6 +38,7 @@ class MessagesController < ApplicationController
       "chat_#{@chat.id}",
       {
         message: @message.content,
+        user_name: @message.user.profile.name,
         user_email: @message.user.email,
         message_id: @message.id
       }

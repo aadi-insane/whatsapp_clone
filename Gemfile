@@ -26,6 +26,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'sprockets-rails'
 gem 'importmap-rails'
+gem "sassc-rails"
 
 # JSON builder (API support if needed)
 gem 'jbuilder', '~> 2.11'

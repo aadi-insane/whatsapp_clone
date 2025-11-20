@@ -24,7 +24,7 @@
             <% if @profile.user == current_user %>
               <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-outline-primary btn-sm" %>
             <% else %>
-              <%= link_to "Message", chats_path, class: "btn btn-success btn-sm" %>
+              <%= link_to "Message", chat_path(@chat), class: "btn btn-success btn-sm" %>
             <% end %>
           </div>
 

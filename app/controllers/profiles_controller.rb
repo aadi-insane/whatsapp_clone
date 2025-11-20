@@ -18,6 +18,11 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = params[:id] ? Profile.find(params[:id]) : current_user.profile
+    @chat = Chat.joins(:chat_memberships)
+              .where(chat_memberships: { user_id: [current_user.id, @profile.user_id] })
+              .group('chats.id')
+              .having('COUNT(chats.id) = 2')
+              .first
   end
 
   private
