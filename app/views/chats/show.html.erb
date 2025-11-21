@@ -39,7 +39,7 @@
        data-chat-id="<%= @chat.id %>"
        data-controller="chat-subscription"
        data-chat-subscription-chat-id-value="<%= @chat.id %>"
-       data-chat-subscription-current-user-email-value="<%= current_user.email %>">
+       data-chat-subscription-current-user-id-value="<%= current_user.id %>">
 
     <%= render partial: 'messages/message', collection: @chat.messages %>
   </div>
@@ -57,10 +57,19 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  // document.addEventListener("turbo:before-stream-render", (event) => {
+  //   const chatWindow = document.querySelector(".whatsapp-chat-window");
+  //   if (chatWindow) {
+  //     // scroll to bottom after new message is inserted
+  //     setTimeout(() => {
+  //       chatWindow.scrollTop = chatWindow.scrollHeight;
+  //     }, 50); // tiny delay to let DOM update
+  //   }
+  // });
+
+  document.addEventListener("turbo:frame-load", () => {
     const chatWindow = document.querySelector(".whatsapp-chat-window");
-    if (chatWindow) {
-      chatWindow.scrollTop = chatWindow.scrollHeight;
-    }
+    if (chatWindow) chatWindow.scrollTop = chatWindow.scrollHeight;
   });
+
 </script>

@@ -1,7 +1,6 @@
-// app/javascript/channels/consumer.js
-// Action Cable provides the framework to deal with WebSockets in Rails.
-// You can generate new channels where WebSocket features live using the `bin/rails generate channel` command.
-
+// Setup ActionCable consumer
 import { createConsumer } from "@rails/actioncable"
 
-export default createConsumer()
+// Export the consumer so other channels can import it
+const consumer = createConsumer()
+export default consumer

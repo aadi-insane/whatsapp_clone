@@ -86,9 +86,9 @@ Rails.application.configure do
     # Optional: Display alerts in the browser
     # Bullet.alert = true
     # Optional: Display alerts in the browser console
-    Bullet.console = true
+    # Bullet.console = true
     # Optional: Add a footer to the page with Bullet warnings
-    Bullet.add_footer = true
+    # Bullet.add_footer = true
     # Optional: Raise an error on N+1 queries (useful for testing)
     # Bullet.raise = true
   end
